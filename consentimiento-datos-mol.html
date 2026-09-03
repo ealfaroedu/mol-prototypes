@@ -1,0 +1,343 @@
+<title>Consentimiento de Datos MOL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F5F3; --surface:#FFFFFF; --surface-2:#FAFBFA;
+    --ink:#1C2333; --ink-soft:#4B5568; --ink-faint:#8891A0;
+    --line:#DBE0DD; --line-soft:#E9ECE9;
+    --accent:#1E5A8C; --accent-ink:#123D61; --accent-soft:#E3ECF3; --accent-soft-line:#C7D9E6;
+    --brass:#9C6B23; --brass-soft:#F3E9D8; --brass-line:#E0CBA0;
+    --danger:#A23B2E; --danger-soft:#F6E5E1;
+    --good:#3D6E4A; --good-soft:#E4EFE6;
+    --font-display:'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --font-body:'Public Sans', -apple-system, Segoe UI, Roboto, sans-serif;
+    --font-mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#11151B; --surface:#171C24; --surface-2:#1D232C;
+      --ink:#E7EAEE; --ink-soft:#AEB6C2; --ink-faint:#77808F;
+      --line:#2B323C; --line-soft:#232933;
+      --accent:#78ACDA; --accent-ink:#BBD6EF; --accent-soft:#1E2C3B; --accent-soft-line:#2C4258;
+      --brass:#D7A85E; --brass-soft:#2C2417; --brass-line:#4A3B22;
+      --danger:#E08A79; --danger-soft:#33211E;
+      --good:#8FC29C; --good-soft:#1E2C22;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#11151B; --surface:#171C24; --surface-2:#1D232C;
+    --ink:#E7EAEE; --ink-soft:#AEB6C2; --ink-faint:#77808F;
+    --line:#2B323C; --line-soft:#232933;
+    --accent:#78ACDA; --accent-ink:#BBD6EF; --accent-soft:#1E2C3B; --accent-soft-line:#2C4258;
+    --brass:#D7A85E; --brass-soft:#2C2417; --brass-line:#4A3B22;
+    --danger:#E08A79; --danger-soft:#33211E;
+    --good:#8FC29C; --good-soft:#1E2C22;
+  }
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
+    font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--accent-soft);color:var(--accent-ink);}
+
+  a{color:var(--accent);}
+  code, .mono{font-family:var(--font-mono);font-size:0.88em;}
+
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;text-wrap:balance;color:var(--ink);margin:0;}
+
+  /* ── Masthead ─────────────────────────────────────────────────────── */
+  .masthead{border-bottom:1px solid var(--line);background:var(--surface);}
+  .masthead-inner{max-width:1180px;margin:0 auto;padding:36px 40px 30px;}
+  .masthead-eyebrow{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--brass);display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .masthead-eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--brass);}
+  .masthead h1{font-size:35px;font-weight:700;margin-bottom:10px;}
+  .masthead p.dek{font-size:16.5px;color:var(--ink-soft);max-width:62ch;margin-bottom:22px;}
+  .masthead-meta{display:flex;flex-wrap:wrap;gap:28px;font-size:12.5px;}
+  .masthead-meta div{display:flex;flex-direction:column;gap:3px;}
+  .masthead-meta .k{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);font-size:10.5px;}
+  .masthead-meta .v{color:var(--ink);font-weight:600;}
+  .status-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 8px;border-radius:99px;
+    background:var(--accent-soft);border:1px solid var(--accent-soft-line);color:var(--accent-ink);
+    font-size:11.5px;font-weight:600;width:fit-content;}
+  .status-pill svg{width:11px;height:11px;stroke:currentColor;stroke-width:2.5;fill:none;}
+
+  /* ── Layout: rail + content ───────────────────────────────────────── */
+  .dossier{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:0;}
+  .rail{border-right:1px solid var(--line);padding:34px 20px 60px 40px;position:sticky;top:0;align-self:start;
+    max-height:100vh;overflow-y:auto;}
+  .rail-title{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:14px;}
+  .rail a{display:block;font-size:13px;color:var(--ink-soft);text-decoration:none;padding:6px 0;
+    border-left:2px solid transparent;padding-left:12px;margin-left:-13px;transition:color .15s,border-color .15s;}
+  .rail a:hover{color:var(--ink);}
+  .rail a .num{font-family:var(--font-mono);color:var(--brass);margin-right:7px;}
+  .rail-divider{height:1px;background:var(--line-soft);margin:16px 0;}
+
+  main{padding:34px 44px 90px 44px;min-width:0;}
+  section{margin-bottom:52px;scroll-margin-top:24px;}
+  section:last-child{margin-bottom:0;}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .sec-num{font-family:var(--font-mono);font-size:13px;color:var(--brass);font-weight:500;}
+  .sec-head h2{font-size:22px;}
+  p{margin:0 0 14px;color:var(--ink-soft);max-width:70ch;}
+  p:last-child{margin-bottom:0;}
+  p.lead{color:var(--ink);font-size:16px;}
+  strong{color:var(--ink);font-weight:600;}
+
+  /* ── Scope grid ───────────────────────────────────────────────────── */
+  .scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:720px){.scope-grid{grid-template-columns:1fr;}}
+  .scope-card{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:18px 20px;}
+  .scope-card h3{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    margin-bottom:11px;display:flex;align-items:center;gap:8px;}
+  .scope-card.in h3{color:var(--good);}
+  .scope-card.out h3{color:var(--danger);}
+  .scope-card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .scope-card li{font-size:13.5px;color:var(--ink-soft);padding-left:18px;position:relative;}
+  .scope-card.in li::before{content:'';position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%;background:var(--good-soft);border:1.5px solid var(--good);}
+  .scope-card.out li::before{content:'';position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%;background:var(--danger-soft);border:1.5px solid var(--danger);}
+
+  /* ── Correo Patricia callout ──────────────────────────────────────── */
+  .memo-note{background:var(--brass-soft);border:1px solid var(--brass-line);border-radius:3px;padding:16px 20px;margin-top:18px;}
+  .memo-note .tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--brass);margin-bottom:8px;display:block;}
+  .memo-note p{color:var(--ink);font-size:13.5px;margin-bottom:0;}
+  .coverage-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px;}
+  .coverage-table th{text-align:left;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink-faint);font-weight:500;padding:8px 12px;border-bottom:1px solid var(--line);}
+  .coverage-table td{padding:10px 12px;border-bottom:1px solid var(--line-soft);color:var(--ink-soft);vertical-align:top;}
+  .coverage-table tr:last-child td{border-bottom:none;}
+  .cov{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;white-space:nowrap;}
+  .cov.partial{background:var(--brass-soft);color:var(--brass);border:1px solid var(--brass-line);}
+  .cov.future{background:var(--accent-soft);color:var(--accent-ink);border:1px solid var(--accent-soft-line);}
+  .cov.legal{background:var(--line-soft);color:var(--ink-faint);}
+
+  /* ── Schema tables ────────────────────────────────────────────────── */
+  .schema-block{margin-bottom:22px;}
+  .schema-block:last-child{margin-bottom:0;}
+  .schema-name{font-family:var(--font-mono);font-size:14px;font-weight:500;color:var(--accent-ink);
+    background:var(--accent-soft);display:inline-block;padding:4px 10px;border-radius:3px;margin-bottom:2px;}
+  .schema-role{font-size:12px;color:var(--ink-faint);margin:6px 0 10px;}
+  table.field-table{width:100%;border-collapse:collapse;font-size:13px;}
+  table.field-table th{text-align:left;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink-faint);font-weight:500;padding:7px 10px;border-bottom:1px solid var(--line);background:var(--surface-2);}
+  table.field-table td{padding:8px 10px;border-bottom:1px solid var(--line-soft);color:var(--ink-soft);}
+  table.field-table td:first-child{font-family:var(--font-mono);color:var(--ink);white-space:nowrap;}
+  table.field-table tr:last-child td{border-bottom:none;}
+  .schema-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:3px;background:var(--surface);}
+  .schema-wrap table.field-table{min-width:520px;}
+  .schema-wrap td, .schema-wrap th{padding-left:14px;}
+
+  /* ── Gate flow ────────────────────────────────────────────────────── */
+  .flow{display:flex;align-items:stretch;gap:0;overflow-x:auto;border:1px solid var(--line);border-radius:3px;background:var(--surface);}
+  .flow-step{flex:1;min-width:190px;padding:18px 20px;position:relative;}
+  .flow-step + .flow-step{border-left:1px solid var(--line);}
+  .flow-step .fs-num{font-family:var(--font-mono);font-size:11px;color:var(--brass);margin-bottom:8px;display:block;}
+  .flow-step h4{font-family:var(--font-body);font-weight:700;font-size:13.5px;margin:0 0 6px;color:var(--ink);}
+  .flow-step p{font-size:12.5px;margin:0;color:var(--ink-soft);}
+  .flow-step.win{background:var(--accent-soft);}
+  .flow-step.win h4{color:var(--accent-ink);}
+  .flow-caption{font-size:12px;color:var(--ink-faint);margin-top:10px;}
+
+  /* ── Decisions ────────────────────────────────────────────────────── */
+  .decision{display:grid;grid-template-columns:52px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft);}
+  .decision:last-child{border-bottom:none;}
+  .decision .d-id{font-family:var(--font-mono);font-size:15px;font-weight:600;color:var(--brass);padding-top:2px;}
+  .decision h4{font-family:var(--font-body);font-weight:700;font-size:14px;margin:0 0 5px;color:var(--ink);}
+  .decision p{font-size:13.5px;margin:0;color:var(--ink-soft);}
+
+  /* ── Risk / open questions ────────────────────────────────────────── */
+  .flags{display:flex;flex-direction:column;gap:10px;}
+  .flag{display:flex;gap:12px;padding:13px 16px;border:1px solid var(--line);border-left:3px solid var(--danger);
+    border-radius:0 3px 3px 0;background:var(--surface);}
+  .flag.question{border-left-color:var(--accent);}
+  .flag svg{width:16px;height:16px;stroke:var(--danger);stroke-width:2;fill:none;flex-shrink:0;margin-top:2px;}
+  .flag.question svg{stroke:var(--accent);}
+  .flag p{margin:0;font-size:13px;color:var(--ink-soft);}
+  .flag p strong{color:var(--ink);}
+
+  /* ── Exhibits (prototipos) — link a artefacto propio, no iframe anidado ─────────────────────────
+     Un iframe anidado dentro de este artefacto agrega una capa extra de sandboxing sobre la que ya
+     tiene cada artefacto de Claude — para no arriesgar la interactividad, cada prototipo es su propio
+     artefacto y acá se linkea, en vez de embeberlo. */
+  .exhibit{border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--surface);}
+  .exhibit-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;}
+  .exhibit-label{font-family:var(--font-mono);font-size:11px;color:var(--brass);letter-spacing:.04em;text-transform:uppercase;}
+  .exhibit-title{font-family:var(--font-body);font-weight:700;font-size:14.5px;color:var(--ink);margin-top:3px;}
+  .exhibit-hint{font-size:12px;color:var(--ink-faint);margin-top:3px;max-width:46ch;}
+  .exhibit-open{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 18px;border-radius:99px;
+    border:1px solid var(--accent-soft-line);background:var(--accent-soft);color:var(--accent-ink);
+    font-family:var(--font-body);font-weight:600;font-size:13px;text-decoration:none;flex-shrink:0;transition:background .15s;}
+  .exhibit-open:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .exhibit-open svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;}
+  .exhibit-foot{padding:10px 18px;font-size:12px;color:var(--ink-faint);border-top:1px solid var(--line);}
+
+  /* ── Next steps ───────────────────────────────────────────────────── */
+  .steps{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:3px;background:var(--surface);overflow:hidden;}
+  .step-row{display:flex;align-items:center;gap:14px;padding:13px 18px;}
+  .step-row + .step-row{border-top:1px solid var(--line-soft);}
+  .step-check{width:17px;height:17px;border-radius:4px;border:1.5px solid var(--good);background:var(--good-soft);
+    flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .step-check svg{width:10px;height:10px;stroke:var(--good);stroke-width:3;fill:none;}
+  .step-row span.label{font-size:13.5px;color:var(--ink);}
+  .step-row span.file{margin-left:auto;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-faint);}
+
+  footer.doc-foot{max-width:1180px;margin:0 auto;padding:26px 44px 50px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:860px){
+    .dossier{grid-template-columns:1fr;}
+    .rail{position:static;max-height:none;border-right:none;border-bottom:1px solid var(--line);padding:20px 40px;}
+    main{padding:30px 24px 70px;}
+    .masthead-inner{padding:28px 24px 24px;}
+  }
+</style>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-eyebrow"><span class="dot"></span>Propuesta técnica</div>
+    <h1>Consentimiento de Datos Personales — Matrícula Online</h1>
+    <p class="dek">Cumplimiento de la Ley N.º 21.719 de Protección de Datos Personales en el proceso de Matrícula Online de Alexia, con los tres prototipos interactivos incluidos como anexos.</p>
+    <div class="masthead-meta">
+      <div><span class="k">Estado</span><span class="status-pill"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Propuesta lista, pendiente de desarrollo</span></div>
+      <div><span class="k">Vigencia de la ley</span><span class="v">1 de diciembre de 2026</span></div>
+      <div><span class="k">Alcance</span><span class="v">Matrícula Online (MatriculaOnline.aspx)</span></div>
+      <div><span class="k">Fecha</span><span class="v">3 de septiembre de 2026</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="dossier">
+  <nav class="rail">
+    <div class="rail-title">Contenido</div>
+    <a href="#por-que"><span class="num">§1</span>Por qué</a>
+    <a href="#alcance"><span class="num">§2</span>Alcance</a>
+    <a href="#flujo"><span class="num">§3</span>Flujo del gate</a>
+    <a href="#riesgos"><span class="num">§4</span>Riesgos y preguntas abiertas</a>
+    <div class="rail-divider"></div>
+    <a href="#anexo-a"><span class="num">A</span>Anexo — Ficha de Centro</a>
+    <a href="#anexo-b"><span class="num">B</span>Anexo — Administración</a>
+    <a href="#anexo-c"><span class="num">C</span>Anexo — Panel apoderado</a>
+    <div class="rail-divider"></div>
+    <a href="#estado"><span class="num">§5</span>Estado y próximos pasos</a>
+  </nav>
+
+  <main>
+
+    <section id="por-que">
+      <div class="sec-head"><span class="sec-num">§1</span><h2>Por qué</h2></div>
+      <p class="lead">La Ley N.º 21.719 entra en vigencia plena el 1 de diciembre de 2026 y exige consentimiento libre, específico, inequívoco y explícito (para datos sensibles) por cada finalidad de tratamiento — sin casillas premarcadas, con la carga de la prueba sobre el colegio como responsable del tratamiento.</p>
+      <p>Hoy Alexia no tiene ningún mecanismo con validez legal para esto en Matrícula Online. El precedente más cercano — <code>IsUsoDatosAceptado</code>/<code>IsUsoFotosAceptado</code>, capturado hoy en la ficha de cada hijo — es una columna mutable, sin historial, sin registro de qué texto vio el apoderado, y con una única autorización genérica que agrupa varias finalidades bajo un solo Sí/No. Exactamente lo que la ley prohíbe.</p>
+    </section>
+
+    <section id="alcance">
+      <div class="sec-head"><span class="sec-num">§2</span><h2>Alcance</h2></div>
+      <div class="scope-grid">
+        <div class="scope-card in">
+          <h3>En esta iteración</h3>
+          <ul>
+            <li>Bloqueo del formulario de MOL hasta consentir</li>
+            <li>Consentimiento granular por finalidad, por alumno</li>
+            <li>Registro histórico e inmutable con snapshot del texto</li>
+            <li>Catálogo e interruptor configurables por colegio</li>
+          </ul>
+        </div>
+        <div class="scope-card out">
+          <h3>Fuera de alcance, a propósito</h3>
+          <ul>
+            <li>Revocación posterior del consentimiento</li>
+            <li>Panel de derechos ARCO</li>
+            <li>Retiro del checkbox legado de fotos/datos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="memo-note">
+        <span class="tag">Sobre el correo de Patricia Carmona — Colegio Alemán de Temuco, 3-sep-2026</span>
+        <p>El colegio pidió un informe de cumplimiento completo de la plataforma, en 5 frentes. Esta propuesta responde <strong>una parte del punto 1</strong> — el resto queda fuera del alcance de un cambio de ingeniería sobre MOL.</p>
+        <table class="coverage-table">
+          <tr><th>Pedido del colegio</th><th>Cobertura</th></tr>
+          <tr><td>1 · Roadmap de adecuaciones</td><td><span class="cov partial">Parcial — esta pieza</span></td></tr>
+          <tr><td>2 · Derechos de titulares (ARCO + portabilidad)</td><td><span class="cov future">A futuro</span></td></tr>
+          <tr><td>3 · Seguridad: 2FA, logs de descarga, cifrado</td><td><span class="cov future">A futuro</span></td></tr>
+          <tr><td>4 · Retención, anonimización, borrado</td><td><span class="cov future">A futuro</span></td></tr>
+          <tr><td>5 · DPA / Anexo de Tratamiento de Datos</td><td><span class="cov legal">Tema legal, no de ingeniería</span></td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="flujo">
+      <div class="sec-head"><span class="sec-num">§3</span><h2>Flujo del gate</h2></div>
+      <p>Extiende la cascada de estados que ya existe en <code>OnInit</code> — no la reemplaza. El consentimiento pendiente se intercala entre Bloqueado y proceso pendiente.</p>
+      <div class="flow">
+        <div class="flow-step"><span class="fs-num">1</span><h4>Bloqueado</h4><p>Apoderado no elegible para matricular. Gana siempre.</p></div>
+        <div class="flow-step win"><span class="fs-num">2 · nuevo</span><h4>Consentimiento pendiente</h4><p>Falta responder para algún hijo elegible. Se muestra el panel.</p></div>
+        <div class="flow-step"><span class="fs-num">3</span><h4>Proceso pendiente</h4><p>Ya tiene una matrícula sin terminar de un ingreso anterior.</p></div>
+        <div class="flow-step"><span class="fs-num">4</span><h4>Bienvenida</h4><p>Wizard normal de Matrícula Online.</p></div>
+      </div>
+      <p class="flow-caption">Server-side, en cada carga de página — nunca ocultar/mostrar solo en el cliente ni depender de un flag de sesión.</p>
+    </section>
+
+    <section id="riesgos">
+      <div class="sec-head"><span class="sec-num">§4</span><h2>Riesgos y preguntas abiertas</h2></div>
+      <div class="flags">
+        <div class="flag"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p><strong>Catálogo sin validar</strong> — el contenido exacto de cada finalidad necesita revisión del equipo legal/funcional antes del primer colegio piloto.</p></div>
+        <div class="flag"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p><strong>Texto legal sin verificar contra el artículo oficial</strong> — la investigación se apoyó en fuentes secundarias; BCN no renderizó sin JS y el PDF no tenía texto extraíble.</p></div>
+        <div class="flag"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p><strong>El colegio podría creer que activó el apartado sin que realmente aplique.</strong> El interruptor se guarda sobre el año lectivo que la Ficha de Centro tiene cargado en ese momento; el proceso de matrícula real, en cambio, siempre calcula internamente su propio año de referencia. Si un colegio se atrasa en avanzar su año activo, esos dos años pueden no coincidir — el administrador prende el check, no ve ningún error, pero el apoderado nunca llega a ver el aviso de consentimiento. Es una condición preexistente de todos los interruptores de esa pantalla (no la introduce este cambio), pero conviene confirmarla antes de anunciar el apartado como "activado" en un colegio.</p></div>
+        <div class="flag question"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><p><strong>Falta decidir si el catálogo inicial debe incluir un ítem para "situación socioeconómica".</strong> La ley la trata como dato sensible (particularidad chilena). Si algún colegio la usa internamente para otorgar becas más allá de lo que reporta obligatoriamente a Mineduc, ese uso adicional necesitaría su propio consentimiento — hoy no confirmamos si algún colegio real hace esto, así que no se incluyó por default.</p></div>
+      </div>
+    </section>
+
+    <section id="anexo-a">
+      <div class="sec-head"><span class="sec-num">A</span><h2>Anexo — Ficha de Centro</h2></div>
+      <p>Dónde el colegio activa el apartado: un interruptor nuevo, junto al resto de las opciones de Matrícula Online que ya existen hoy en esa misma pantalla.</p>
+      <div class="exhibit">
+        <div class="exhibit-bar">
+          <div><span class="exhibit-label">Prototipo interactivo</span><div class="exhibit-title">Ficha de Centro — interruptor</div><div class="exhibit-hint">Fila resaltada con la etiqueta "NUEVO" · resto de la pestaña sin cambios</div></div>
+          <a class="exhibit-open" href="consentimiento-ficha-centro.html" target="_blank" rel="noopener">Abrir prototipo <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="anexo-b">
+      <div class="sec-head"><span class="sec-num">B</span><h2>Anexo — Administración</h2></div>
+      <p>Pantalla nueva y propia donde el colegio configura el texto informativo y el catálogo de preguntas.</p>
+      <div class="exhibit">
+        <div class="exhibit-bar">
+          <div><span class="exhibit-label">Prototipo interactivo</span><div class="exhibit-title">Administración del catálogo</div><div class="exhibit-hint">Reordenar arrastrando una tarjeta · lista con scroll interno</div></div>
+          <a class="exhibit-open" href="consentimiento-admin.html" target="_blank" rel="noopener">Abrir prototipo <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="anexo-c">
+      <div class="sec-head"><span class="sec-num">C</span><h2>Anexo — Panel del apoderado</h2></div>
+      <p>Lo que ve la familia en Matrícula Online mientras no tenga consentimiento vigente.</p>
+      <div class="exhibit">
+        <div class="exhibit-bar">
+          <div><span class="exhibit-label">Prototipo interactivo</span><div class="exhibit-title">Panel de consentimiento</div><div class="exhibit-hint">Elegir modo, responder y grabar · sin preselección</div></div>
+          <a class="exhibit-open" href="consentimiento-apoderado.html" target="_blank" rel="noopener">Abrir prototipo <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="estado">
+      <div class="sec-head"><span class="sec-num">§5</span><h2>Estado y próximos pasos</h2></div>
+      <p>La propuesta técnica está completa y validada del lado de desarrollo, con los tres prototipos ya construidos y revisados.</p>
+      <div class="steps">
+        <div class="step-row"><span class="step-check"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="label">Propuesta técnica completa (qué, cómo, criterios de aceptación)</span></div>
+        <div class="step-row"><span class="step-check"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="label">Interruptor en Ficha de Centro — prototipado</span></div>
+        <div class="step-row"><span class="step-check"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="label">Pantalla de administración del catálogo — prototipada</span></div>
+        <div class="step-row"><span class="step-check"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="label">Panel del apoderado — prototipado</span></div>
+      </div>
+      <p style="margin-top:16px;">Siguiente paso: comenzar el desarrollo — quedan pendientes de confirmar el catálogo final de preguntas (con el equipo legal/funcional) y las dos preguntas abiertas de §4 antes del primer colegio piloto.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="doc-foot">
+  <span>Alexia CL · Cospa-Agilmic, S.L.U.</span>
+  <span>Propuesta — Consentimiento de Datos Personales, Matrícula Online</span>
+</footer>
